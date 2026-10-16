@@ -5,7 +5,7 @@ export default function Dashboard() {
   const [logs, setLogs] = useState('{ "success": true, "message": "Dashboard unlocked" }');
   
   // Article State
-  const [articleTopic, setArticleTopic] = useState('Future of AI Automation');
+  const [articleTopic, setArticleTopic] = useState('How AI Automation is Changing Our Daily Lives');
   const [articleContent, setArticleContent] = useState('');
   const [articleLoading, setArticleLoading] = useState(false);
 
@@ -37,13 +37,20 @@ export default function Dashboard() {
     setLoading(false);
   };
 
-  // Real AI Article Generation using Pollinations Text API (Free & Fast)
+  // Human-Like SEO Article Generator (AdSense Friendly)
   const generateRealArticle = async () => {
     if (!articleTopic) return;
     setArticleLoading(true);
-    setArticleContent('🤖 AI is writing your article...');
+    setArticleContent('✍️ Crafting a natural, human-like article...');
     try {
-      const prompt = `Write a detailed, engaging, and professional blog post about: "${articleTopic}". Include headings, bullet points, and an introduction/conclusion.`;
+      const prompt = `Write a high-quality, 100% human-sounding blog post in English about: "${articleTopic}". 
+      Guidelines for tone:
+      - Write in a natural, conversational, yet authoritative blog style (like a top-tier tech blogger).
+      - Avoid robotic robotic lists, heavy corporate buzzwords, and dry textbook phrasing.
+      - Use short paragraphs, engaging hooks, and a smooth flow from start to finish.
+      - Add a catchy introduction and a warm concluding thought.
+      - Do not use markdown data tables; keep it rich in narrative and readability.`;
+      
       const res = await fetch(`https://text.pollinations.ai/${encodeURIComponent(prompt)}`);
       const text = await res.text();
       setArticleContent(text);
@@ -98,7 +105,7 @@ export default function Dashboard() {
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif', background: '#0f172a', color: '#f8fafc', minHeight: '100vh' }}>
       <h1 style={{ fontSize: '22px', marginBottom: '6px' }}>🤖 OmniRoute Media Suite</h1>
-      <p style={{ color: '#94a3b8', marginBottom: '16px', fontSize: '14px' }}>Agent, AI Articles, Media & WP Publisher.</p>
+      <p style={{ color: '#94a3b8', marginBottom: '16px', fontSize: '14px' }}>Agent, Human-Like Articles, Media & WP Publisher.</p>
       
       {/* Navigation Tabs */}
       <div style={{ display: 'flex', gap: '6px', marginBottom: '16px', flexWrap: 'wrap' }}>
@@ -121,10 +128,10 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Tab 2: Real AI Articles Generator */}
+      {/* Tab 2: Human-Like Article Generator */}
       {activeTab === 'content' && (
         <div style={{ background: '#1e293b', padding: '14px', borderRadius: '8px', border: '1px solid #334155' }}>
-          <h3 style={{ margin: '0 0 10px 0', fontSize: '15px', color: '#10b981' }}>📝 AI Article Writer</h3>
+          <h3 style={{ margin: '0 0 10px 0', fontSize: '15px', color: '#10b981' }}>📝 Human-Like Article Writer (AdSense Safe)</h3>
           
           <label style={{ fontSize: '12px', color: '#94a3b8' }}>Enter Article Topic / Title:</label>
           <input 
@@ -138,12 +145,12 @@ export default function Dashboard() {
             onClick={generateRealArticle} 
             style={{ width: '100%', padding: '12px', background: '#10b981', color: '#fff', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', marginBottom: '14px' }}
           >
-            {articleLoading ? "Writing Article..." : "Generate AI Article ✨"}
+            {articleLoading ? "Writing Naturally..." : "Generate Human-Like Article ✨"}
           </button>
 
           {articleContent && (
             <div style={{ background: '#0f172a', padding: '12px', borderRadius: '6px', border: '1px solid #10b981' }}>
-              <p style={{ whiteSpace: 'pre-wrap', color: '#f1f5f9', fontSize: '13px', lineHeight: '1.5', margin: 0 }}>{articleContent}</p>
+              <p style={{ whiteSpace: 'pre-wrap', color: '#f1f5f9', fontSize: '13px', lineHeight: '1.6', margin: 0 }}>{articleContent}</p>
             </div>
           )}
         </div>
